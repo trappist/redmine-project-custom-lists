@@ -1,0 +1,13 @@
+<div class="splitcontentleft">
+<% i = 0 %>
+<% split_on = project_custom_lists.size / 2 %>
+<% project_custom_lists.each do |list| %>
+	<p><%= custom_field_tag_with_label :issue, nil %></p>
+<% if i == split_on -%>
+</div><div class="splitcontentright">
+<% end -%>
+<% i += 1 -%>
+<% end -%>
+</div> 
+<div style="clear:both;"> </div>
+

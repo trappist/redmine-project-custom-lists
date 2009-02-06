@@ -1,0 +1,11 @@
+<fieldset style="display:inline;float:left;" id="fs<%=list.id%>"><legend><%= list.name %></legend>
+	<div id="list<%=list.id%>">
+		<div id="flash<%=list.id%>"></div>
+		<% remote_form_for list do |f| -%>
+		<textarea rows="6" cols="20" name="project_custom_list[project_custom_values]" id="values<%=list.id%>"><%= list.project_custom_values.map(&:value).join("\n") %></textarea><br />
+		<%= f.hidden_field :project_id, :value => list.project_id %>
+		<%= link_to_remote :delete, :url => project_custom_list_path(list), :method => :delete, :confirm => "Are you sure?" %>
+		<%= submit_tag "Save" %>
+		<% end -%>
+	</div>
+</fieldset>

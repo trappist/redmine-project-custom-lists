@@ -1,0 +1,13 @@
+<fieldset id="customlists"><legend><%=l(:label_project_custom_lists)%></legend>
+	<% ProjectCustomList.for_project(@project).each do |list| -%>
+		<%= render :partial => "projects/settings/custom_list_form", :locals => {:list => list} %>
+	<% end -%>
+</fieldset>
+<hr />
+<fieldset><legend><%=l(:label_project_custom_list_new)%></legend>
+	<div id="pclerrors" class="error"></div>
+	<% remote_form_for ProjectCustomList.new do |f| -%>
+		<%= f.hidden_field :project_id, :value => @project.id %>
+		<%=l(:label_project_custom_list_name)%>: <%= f.text_field :name %>	<%= f.submit "Save" %>
+	<% end -%>
+</fieldset>
